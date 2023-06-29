@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include osaz_app *.css
+recursive-include osaz_app *.csv
+recursive-include osaz_app *.html
+recursive-include osaz_app *.ico
+recursive-include osaz_app *.js
+recursive-include osaz_app *.json
+recursive-include osaz_app *.md
+recursive-include osaz_app *.png
+recursive-include osaz_app *.py
+recursive-include osaz_app *.svg
+recursive-include osaz_app *.txt
+recursive-exclude osaz_app *.pyc
