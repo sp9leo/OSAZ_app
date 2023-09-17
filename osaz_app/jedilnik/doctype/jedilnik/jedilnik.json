@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-29 11:24:12.938465",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "datum",
+  "zajtrk",
+  "malica",
+  "kosilo",
+  "is_published"
+ ],
+ "fields": [
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Datum",
+   "reqd": 1
+  },
+  {
+   "fieldname": "zajtrk",
+   "fieldtype": "Table MultiSelect",
+   "label": "Zajtrk",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "malica",
+   "fieldtype": "Table MultiSelect",
+   "label": "Malica",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "kosilo",
+   "fieldtype": "Table MultiSelect",
+   "label": "Kosilo",
+   "options": "Zivila Link"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_published",
+   "fieldtype": "Check",
+   "label": "Objavljeno"
+  }
+ ],
+ "links": [],
+ "modified": "2023-07-29 11:26:46.052747",
+ "modified_by": "Administrator",
+ "module": "Jedilnik",
+ "name": "Jedilnik",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
