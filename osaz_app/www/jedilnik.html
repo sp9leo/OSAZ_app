@@ -1,12 +1,12 @@
 <h3>List of Users</h3>
 <ol>
 {% for jed in jedilnik %}
-    <li>{{ jed.date }}, {{ jed.zajtrk }}, {{ jed.malica }}, {{ jed.kosilo }}</li>
+    <li>{{ jed.datum }}, {{ jed.zajtrk }}, {{ jed.malica }}, {{ jed.kosilo }}</li>
 {% endfor %}
 </ol>
 Produced on {{today}}
 <div>
-    {% set jedilnik = frappe.get_all('Jedilnik', filters={'date': '2023-06-30'}, fields=['date'], order_by='date asc') %}
+    {% set jedilnik = frappe.get_all('Jedilnik', filters={'datum': '2023-09-17'}, fields=['datum'], order_by='datum asc') %}
     {% for jd in jedilnik %}
     <div>
         <h3>{{ jd.name }}</h3>

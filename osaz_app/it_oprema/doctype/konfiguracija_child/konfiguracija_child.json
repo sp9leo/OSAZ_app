@@ -1,28 +1,29 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2023-07-29 09:45:39.109766",
+ "creation": "2023-10-17 14:51:59.400360",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "zivila_link"
+  "config_device"
  ],
  "fields": [
   {
-   "fieldname": "zivila_link",
+   "fieldname": "config_device",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "zivila link",
-   "options": "Zivila"
+   "label": "Device",
+   "options": "Device"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-10-17 14:04:55.867736",
+ "modified": "2023-10-17 15:17:56.218117",
  "modified_by": "Administrator",
- "module": "Jedilnik",
- "name": "Zivila Link",
+ "module": "IT_Oprema",
+ "name": "Konfiguracija child",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

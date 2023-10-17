@@ -1,0 +1,115 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DEV.###",
+ "creation": "2023-10-17 14:13:16.608421",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "device_name",
+  "device_inventory_code",
+  "device_location",
+  "device_admin",
+  "device_user",
+  "device_group",
+  "device_status",
+  "device_type",
+  "device_serial",
+  "device_id",
+  "koda"
+ ],
+ "fields": [
+  {
+   "fieldname": "device_name",
+   "fieldtype": "Data",
+   "label": "Ime"
+  },
+  {
+   "fieldname": "device_location",
+   "fieldtype": "Link",
+   "label": "Lokacija",
+   "options": "Location"
+  },
+  {
+   "fieldname": "device_admin",
+   "fieldtype": "Link",
+   "label": "Skrbnik",
+   "options": "User"
+  },
+  {
+   "fieldname": "device_user",
+   "fieldtype": "Link",
+   "label": "Uporabnik",
+   "options": "User"
+  },
+  {
+   "fieldname": "device_group",
+   "fieldtype": "Data",
+   "label": "Skupina"
+  },
+  {
+   "fieldname": "device_status",
+   "fieldtype": "Data",
+   "label": "Status"
+  },
+  {
+   "fieldname": "device_type",
+   "fieldtype": "Data",
+   "label": "Tip"
+  },
+  {
+   "fieldname": "device_serial",
+   "fieldtype": "Data",
+   "label": "Serijska \u0161t."
+  },
+  {
+   "fieldname": "device_id",
+   "fieldtype": "Data",
+   "label": "Interna \u0161t."
+  },
+  {
+   "bold": 1,
+   "description": "Inventarna \u0161tevilka naprave",
+   "fieldname": "device_inventory_code",
+   "fieldtype": "Data",
+   "label": "Inventarna \u0161t.",
+   "non_negative": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "device.device_inventory_code",
+   "fieldname": "koda",
+   "fieldtype": "Barcode",
+   "label": "koda"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Pc_Konfiguracija",
+   "link_fieldname": "config_device"
+  }
+ ],
+ "modified": "2023-10-17 15:59:45.692858",
+ "modified_by": "Administrator",
+ "module": "IT_Oprema",
+ "name": "Device",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
