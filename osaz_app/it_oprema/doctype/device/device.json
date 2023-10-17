@@ -89,9 +89,17 @@
   {
    "link_doctype": "Pc_Konfiguracija",
    "link_fieldname": "config_device"
+  },
+  {
+   "link_doctype": "Location",
+   "link_fieldname": "location_name"
+  },
+  {
+   "link_doctype": "Asset Movement",
+   "link_fieldname": "asset"
   }
  ],
- "modified": "2023-10-17 15:59:45.692858",
+ "modified": "2023-10-17 16:27:45.104027",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Device",
