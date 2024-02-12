@@ -1,0 +1,38 @@
+<h3>List of Users</h3>
+<ol>
+    {{zivila}}
+    
+    <h3>sql</h3>
+    {{sql}}
+
+    <h3>s in sql</h3>
+    {% for zivila_link in sql %}
+    
+    {{zivila_link}}
+    {% for z in zivila_link %}
+{{zivila_link}}
+    {% endfor %}
+    {% endfor %}
+
+{% for jed in jedilnik %}
+
+
+    <li>{{ jed.datum }}, {{ jed.zajtrk }}, {{ jed.malica }}, {{ jed.kosilo }}</li>
+{% endfor %}
+</ol>
+Produced on {{today}}
+<div>
+    {% set jedilnik = frappe.get_all('Jedilnik', filters={'datum': '2024-01-12', 'name': '30e33422af'}, fields=['datum'], order_by='datum asc') %}
+    {% for jd in jedilnik %}
+    <div>
+        <h3>{{ jd.name }}</h3>
+        <p>Due Date: {{ frappe.format('2023-06-29', {'fieldtype': 'Date'}) }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{{list}}
+{% for l in list %}
+{{l.parent}}
+{{l.zivila_link}}
+{% endfor %}

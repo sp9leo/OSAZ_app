@@ -8,137 +8,63 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "device_inventory_code",
+  "computer_inventory_code",
   "column_break_ibxw",
-  "device_id",
+  "computer_id",
   "column_break_ypaf",
-  "device_location",
+  "computer_location",
   "section_break_mord",
-  "device_name",
+  "computer_name",
   "column_break_enpj",
-  "device_type",
-  "device_serial",
+  "computer_type",
+  "computer_serial",
   "column_break_laww",
-  "device_status",
-  "device_group",
+  "computer_status",
+  "computer_group",
   "section_break_bvyj",
-  "koda",
+  "column_break_ehtk",
+  "barcode_computer",
   "column_break_hdtj",
-  "device_admin",
-  "device_user",
+  "computer_admin",
+  "computer_user",
   "tab_2_tab",
   "attach_qsif",
   "column_break_wuik",
   "tab_3_tab",
-  "table_uedx",
-  "column_break_kpvx",
+  "link_gcpt",
+  "column_break_ipna",
   "tab_4_tab",
   "html_kqki",
   "column_break_ndnx"
  ],
  "fields": [
   {
-   "bold": 1,
-   "description": "Inventarna \u0161tevilka naprave",
-   "fieldname": "device_inventory_code",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "in_preview": 1,
-   "in_standard_filter": 1,
-   "label": "Inventarna \u0161t.",
-   "non_negative": 1
-  },
-  {
    "fieldname": "column_break_ibxw",
    "fieldtype": "Column Break"
-  },
-  {
-   "description": "Interna \u0161tevilka naprave",
-   "fieldname": "device_id",
-   "fieldtype": "Data",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Interna \u0161t.",
-   "unique": 1
   },
   {
    "fieldname": "column_break_ypaf",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "device_location",
-   "fieldtype": "Link",
-   "in_filter": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Lokacija",
-   "options": "Location",
-   "search_index": 1
-  },
-  {
    "fieldname": "section_break_mord",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "device_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Ime"
   },
   {
    "fieldname": "column_break_enpj",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "device_type",
-   "fieldtype": "Data",
-   "label": "Tip"
-  },
-  {
-   "fieldname": "device_serial",
-   "fieldtype": "Data",
-   "label": "Serijska \u0161t."
-  },
-  {
    "fieldname": "column_break_laww",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "device_status",
-   "fieldtype": "Data",
-   "label": "Status"
-  },
-  {
-   "fieldname": "device_group",
-   "fieldtype": "Data",
-   "label": "Skupina"
   },
   {
    "fieldname": "section_break_bvyj",
    "fieldtype": "Section Break"
   },
   {
-   "fetch_from": "device.device_inventory_code",
-   "fieldname": "koda",
-   "fieldtype": "Barcode",
-   "label": "koda"
-  },
-  {
    "fieldname": "column_break_hdtj",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "device_admin",
-   "fieldtype": "Link",
-   "label": "Skrbnik",
-   "options": "User"
-  },
-  {
-   "fieldname": "device_user",
-   "fieldtype": "Link",
-   "label": "Uporabnik",
-   "options": "User"
   },
   {
    "fieldname": "tab_2_tab",
@@ -160,15 +86,6 @@
    "label": "Tab 3"
   },
   {
-   "fieldname": "table_uedx",
-   "fieldtype": "Table",
-   "options": "Konfiguracija child"
-  },
-  {
-   "fieldname": "column_break_kpvx",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "tab_4_tab",
    "fieldtype": "Tab Break",
    "label": "Tab 4"
@@ -180,6 +97,100 @@
   {
    "fieldname": "column_break_ndnx",
    "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "description": "Inventarna \u0161tevilka naprave",
+   "fieldname": "computer_inventory_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Inventarna \u0161t.",
+   "non_negative": 1
+  },
+  {
+   "description": "Interna \u0161tevilka naprave",
+   "fieldname": "computer_id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Interna \u0161t.",
+   "unique": 1
+  },
+  {
+   "fieldname": "computer_location",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Lokacija",
+   "options": "Location",
+   "search_index": 1
+  },
+  {
+   "fieldname": "computer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ime"
+  },
+  {
+   "fieldname": "computer_type",
+   "fieldtype": "Select",
+   "label": "Tip",
+   "options": "Namizni\nPrenosni\nTabli\u010dni"
+  },
+  {
+   "fieldname": "computer_serial",
+   "fieldtype": "Data",
+   "label": "Serijska \u0161t."
+  },
+  {
+   "fieldname": "computer_status",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "IT-Status"
+  },
+  {
+   "fieldname": "computer_group",
+   "fieldtype": "Link",
+   "label": "Skupina",
+   "options": "Device Group"
+  },
+  {
+   "fieldname": "computer_admin",
+   "fieldtype": "Link",
+   "label": "Skrbnik",
+   "options": "User"
+  },
+  {
+   "fieldname": "computer_user",
+   "fieldtype": "Link",
+   "label": "Uporabnik",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_ehtk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "barcode_computer",
+   "fieldtype": "Barcode",
+   "label": "Barcode"
+  },
+  {
+   "fetch_from": ".",
+   "fieldname": "link_gcpt",
+   "fieldtype": "Link",
+   "options": "Pc_Konfiguracija",
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_ipna",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -187,14 +198,14 @@
   {
    "group": "Povezave",
    "link_doctype": "Pc_Konfiguracija",
-   "link_fieldname": "config_device"
+   "link_fieldname": "pckonfig_name"
   },
   {
    "link_doctype": "Asset Movement",
    "link_fieldname": "asset"
   }
  ],
- "modified": "2023-11-28 13:57:48.580959",
+ "modified": "2023-12-06 09:56:33.594612",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Computer",
@@ -216,5 +227,18 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [
+  {
+   "color": "Blue",
+   "title": "computer_status"
+  },
+  {
+   "color": "Green",
+   "title": "Nov"
+  },
+  {
+   "color": "Blue",
+   "title": "Namizni"
+  }
+ ]
 }

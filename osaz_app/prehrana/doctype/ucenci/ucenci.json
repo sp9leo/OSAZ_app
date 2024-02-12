@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:",
+ "creation": "2023-12-20 07:22:27.807804",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_jpnp",
+  "ucenec_id",
+  "ime",
+  "priimek",
+  "oddelek",
+  "column_break_asqs",
+  "html_lxad",
+  "qr_image",
+  "qr_code",
+  "section_break_felr",
+  "column_break_fjfk",
+  "zajtrk",
+  "malica",
+  "kosilo",
+  "column_break_eyat",
+  "vozac",
+  "dieta",
+  "obroki_tab",
+  "qr_table",
+  "tab_2_tab",
+  "obrok",
+  "table_wczu"
+ ],
+ "fields": [
+  {
+   "fieldname": "ime",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Ime"
+  },
+  {
+   "fieldname": "priimek",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Priimek"
+  },
+  {
+   "fieldname": "oddelek",
+   "fieldtype": "Select",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "Oddelek",
+   "options": "\n1.A\n1.B\n1.OPP\n2.A\n2.B\n3.A\n3.B\n3.OPP\n4.A\n4.B\n4.OPP\n5.A\n5.B\n6.A\n6.B\n6.OPP\n7.A\n7.B\n7.OPP\n8.A\n8.B\n8.OPP\n9.A\n9.B\n9.OPP"
+  },
+  {
+   "fieldname": "section_break_jpnp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "qr_image",
+   "fieldtype": "Image",
+   "hidden": 1,
+   "label": "QR",
+   "options": "qr_code"
+  },
+  {
+   "fieldname": "qr_code",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Qr_code"
+  },
+  {
+   "fieldname": "ucenec_id",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "UID",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_asqs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Odjava obroka"
+  },
+  {
+   "fieldname": "table_wczu",
+   "fieldtype": "Table",
+   "options": "Obrok"
+  },
+  {
+   "fieldname": "section_break_felr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "zajtrk",
+   "fieldtype": "Check",
+   "label": "Zajtrk"
+  },
+  {
+   "default": "0",
+   "fieldname": "malica",
+   "fieldtype": "Check",
+   "label": "Malica"
+  },
+  {
+   "default": "0",
+   "fieldname": "kosilo",
+   "fieldtype": "Check",
+   "label": "Kosilo"
+  },
+  {
+   "fieldname": "column_break_eyat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "dieta",
+   "fieldtype": "Check",
+   "label": "Dieta"
+  },
+  {
+   "fieldname": "column_break_fjfk",
+   "fieldtype": "Column Break",
+   "set_only_once": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "vozac",
+   "fieldtype": "Check",
+   "label": "Voza\u010d"
+  },
+  {
+   "fieldname": "html_lxad",
+   "fieldtype": "HTML",
+   "options": "<figure class=\"figure\"><img src=\"{{doc.qr_code}}\" alt=\"\" class=\"img-fluid\"> <figcaption class=\"figure-caption text-center\">{{doc.ucenec_id}}</figcaption></figure>"
+  },
+  {
+   "fieldname": "qr_table",
+   "fieldtype": "Table",
+   "in_filter": 1,
+   "label": "qr_table",
+   "options": "QR_django"
+  },
+  {
+   "fieldname": "obroki_tab",
+   "fieldtype": "Tab Break",
+   "label": "Obroki"
+  },
+  {
+   "fieldname": "obrok",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Obrok"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-22 13:54:45.831526",
+ "modified_by": "Administrator",
+ "module": "prehrana",
+ "name": "Ucenci",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "priimek"
+}

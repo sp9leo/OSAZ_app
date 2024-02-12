@@ -36,6 +36,14 @@ app_license = "MIT"
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
+
+jinja = {
+	"methods": [
+		"osaz_app.qr_code.get_qr_code"
+	],
+	# "filters": "qr_demo.utils.jinja_filters"
+}
+
 # Home Pages
 # ----------
 

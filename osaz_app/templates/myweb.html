@@ -1,0 +1,79 @@
+<!-- {% extends base_template_path %} -->
+{% block hero %}{% endblock %}
+<link href="/assets/osaz_app/assets/css/style.css" rel="stylesheet">
+{% block content %}
+
+{% macro main_content() %}
+<div class="page-content-wrapper">
+	<!-- breadcrumbs -->
+	<div class="page-breadcrumbs">
+		{% block breadcrumbs %}
+			{% include 'templates/includes/breadcrumbs.html' %}
+		{% endblock %}
+	</div>
+
+	{% block page_container %}
+	<main class="{% if not full_width %}container my-4{% endif %}">
+		<div class="container">
+			<div class="row">
+				{% block header %}{% endblock %}
+			</div>
+
+			{% if self.header_actions() %}
+			<div class="container">
+				{% block header_actions %}{% endblock %}
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="page_content">
+			{%- block page_content -%}{%- endblock -%}
+		</div>
+
+		<div class="page-footer">
+			{%- block page_footer -%}{%- endblock -%}
+		</div>
+	</main>
+	{% endblock %}
+</div>
+{% endmacro %}
+
+{% macro container_attributes() -%}
+id="page-{{ name or route | e }}" data-path="{{ pathname | e }}"
+{%- if page_or_generator=="Generator" %}source-type="Generator" data-doctype="{{ doctype }}"{%- endif %}
+{%- if source_content_type %}source-content-type="{{ source_content_type }}"{%- endif %}
+{%- endmacro %}
+
+{% macro sidebar() %}
+<div class="sidebar-column col-sm-2">
+	{% block page_sidebar %}
+	{% include "templates/left_sidebar.html" %}
+	{% endblock %}
+</div>
+{% endmacro %}
+{% macro sidebar_right() %}
+<div class="sidebar-column col-sm-2">
+	{% block right_sidebar %}
+	{% include "templates/right_sidebar.html" %}
+	{% endblock %}
+</div>
+{% endmacro %}
+
+
+<div class="container">
+	<div class="row" >
+		
+		
+		{{ sidebar() }}
+		
+		<div class="main-column col-sm-8">
+			{{ main_content() }}
+		</div>
+		
+		{{ sidebar_right() }}
+		
+	</div>
+</div>
+
+
+{% endblock %}

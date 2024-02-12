@@ -1,0 +1,62 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-08 14:56:16.297284",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "qr_link",
+  "read_only_znqn",
+  "read_only_sxdy",
+  "read_only_qkoj",
+  "read_only_iljt",
+  "data_neav"
+ ],
+ "fields": [
+  {
+   "fetch_from": "qr_link.uid",
+   "fieldname": "read_only_znqn",
+   "fieldtype": "Read Only",
+   "in_list_view": 1
+  },
+  {
+   "fetch_from": "qr_link.qr_date",
+   "fieldname": "read_only_sxdy",
+   "fieldtype": "Read Only",
+   "in_list_view": 1
+  },
+  {
+   "fetch_from": "qr_link.qr_time",
+   "fieldname": "read_only_qkoj",
+   "fieldtype": "Read Only",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qr_link",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "options": "QR_django"
+  },
+  {
+   "fetch_from": "qr_link.obrok",
+   "fieldname": "read_only_iljt",
+   "fieldtype": "Read Only"
+  },
+  {
+   "fieldname": "data_neav",
+   "fieldtype": "Data"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-09 09:12:06.735123",
+ "modified_by": "Administrator",
+ "module": "prehrana",
+ "name": "qr_django_link",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

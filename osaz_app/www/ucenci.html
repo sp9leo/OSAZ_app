@@ -1,0 +1,8 @@
+<h3>List of Users</h3>
+<ol>
+{% for user in ucenci %}
+    <li>{{ user.ucenec_id }} {{ user.get("last_name", "") }}</li>
+    <p>QR Code generated ad-hoc:</p>
+    <img src="{{ user.qr_code }}" alt="Hello World!"/>
+{% endfor %}
+</ol>

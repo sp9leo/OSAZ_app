@@ -1,0 +1,65 @@
+<!-- <style>
+    .print-format table, .print-format tr,
+    .print-format td, .print-format div, .print-format p {
+        font-family: Monospace;
+        line-height: 100%;
+        vertical-align: middle;
+    }
+    @media screen {
+        .print-format {
+            width: 33.1in;
+            padding: 0.25in;
+            min-height: 46.8<style>
+    .print-format table, .print-format tr,
+    .print-format td, .print-format div, .print-format p {
+        font-family: Monospace;
+        line-height: 200%;
+        vertical-align: middle;
+    }
+    @media screen {
+        .print-format {
+            width: 33.8in;
+            padding: 0.25in;
+            min-height: 46.8in;
+        }
+    }
+</style>
+
+ -->
+
+
+<h2 class="text-center">{%= __("Transport Bill Report") %}</h2>
+<h4 class="text-center">{%= (filters.party || filters.account) && ((filters.party || filters.account) + ", ")  || "" %} {%= filters.company %}</h4>
+<div class="row">
+  <div class="col-xs-6">
+      <h5 class="text-center">
+                {%= __("Vehicle Number:")%}
+                {%= filters.vehicle %}
+        </h5>
+  </div>
+  <div class="col-xs-6">
+       
+  </div>
+</div>
+<hr>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="width: 5%">{%= __("ucenec ID") %}</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        {% for(var i=0, l=data.length; i<l; i++) { %}
+            <tr>
+                <td style="text-align: center;">{%= i+1 %}</td>
+                
+                <td>{%= data[i][__("ucenec_id")] %}</td>
+				<td><img src="{%= data[i][__("qr_code")] %}" style="max-width:10%" alt="Hello World!"/><p>{%= data[i][__("ucenec_id")] %}</p></td>
+                
+            </tr>
+        {% } %}
+    </tbody>
+</table>
+
+

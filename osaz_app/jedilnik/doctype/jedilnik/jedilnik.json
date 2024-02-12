@@ -1,52 +1,120 @@
 {
  "actions": [],
+ "allow_guest_to_view": 1,
  "allow_rename": 1,
  "creation": "2023-07-29 11:24:12.938465",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "section_break_fqdx",
   "datum",
-  "zajtrk",
-  "malica",
-  "kosilo",
-  "is_published"
+  "datum_end",
+  "route",
+  "section_break_unst",
+  "sola_column",
+  "zajtrk_sola",
+  "malica_sola",
+  "kosilo_sola",
+  "column_break_kqvs",
+  "zajtrk_vrtec",
+  "malica_vrtec",
+  "kosilo_vrtec",
+  "pop_malica_vrtec",
+  "column_break_kose",
+  "kosilo_gimnazija"
  ],
  "fields": [
   {
-   "fieldname": "datum",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Datum",
-   "reqd": 1
+   "fieldname": "column_break_kqvs",
+   "fieldtype": "Column Break",
+   "label": "Vrtec"
   },
   {
-   "fieldname": "zajtrk",
+   "fieldname": "column_break_kose",
+   "fieldtype": "Column Break",
+   "label": "Gimnazija"
+  },
+  {
+   "fieldname": "zajtrk_sola",
    "fieldtype": "Table MultiSelect",
    "label": "Zajtrk",
    "options": "Zivila Link"
   },
   {
-   "fieldname": "malica",
+   "fieldname": "malica_sola",
    "fieldtype": "Table MultiSelect",
    "label": "Malica",
    "options": "Zivila Link"
   },
   {
-   "fieldname": "kosilo",
+   "fieldname": "kosilo_sola",
    "fieldtype": "Table MultiSelect",
    "label": "Kosilo",
    "options": "Zivila Link"
   },
   {
-   "default": "0",
-   "fieldname": "is_published",
-   "fieldtype": "Check",
-   "label": "Objavljeno"
+   "fieldname": "zajtrk_vrtec",
+   "fieldtype": "Table MultiSelect",
+   "label": "Zajtrk",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "malica_vrtec",
+   "fieldtype": "Table MultiSelect",
+   "label": "Malica",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "kosilo_vrtec",
+   "fieldtype": "Table MultiSelect",
+   "label": "Kosilo",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "kosilo_gimnazija",
+   "fieldtype": "Table MultiSelect",
+   "label": "Kosilo",
+   "options": "Zivila Link"
+  },
+  {
+   "fieldname": "sola_column",
+   "fieldtype": "Column Break",
+   "label": "Sola"
+  },
+  {
+   "fieldname": "section_break_fqdx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum"
+  },
+  {
+   "fieldname": "section_break_unst",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "datum_end",
+   "fieldtype": "Date",
+   "label": "Datum Copy"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data"
+  },
+  {
+   "fieldname": "pop_malica_vrtec",
+   "fieldtype": "Table MultiSelect",
+   "label": "Popoldanska malica",
+   "options": "Zivila Link"
   }
  ],
+ "has_web_view": 1,
+ "is_calendar_and_gantt": 1,
  "links": [],
- "modified": "2023-07-29 11:26:46.052747",
+ "modified": "2024-01-23 11:56:53.148615",
  "modified_by": "Administrator",
  "module": "Jedilnik",
  "name": "Jedilnik",
@@ -63,8 +131,22 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest",
+   "share": 1,
+   "write": 1
   }
  ],
+ "route": "jedilnik",
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

@@ -2,7 +2,10 @@
 # For license information, please see license.txt
 
 # import frappe
-from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 
-class Jedilnik(Document):
+class Jedilnik(WebsiteGenerator):
 	pass
+
+def get_context(context):
+    context.jedilnik = frappe.get_all("Jedilnik",fields=['*']) # type: ignore

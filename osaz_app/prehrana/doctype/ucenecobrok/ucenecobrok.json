@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-12-20 09:35:01.683923",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "link_obrok",
+  "datum",
+  "read_only_eqdg",
+  "read_only_hcuw",
+  "link_ucenec"
+ ],
+ "fields": [
+  {
+   "fieldname": "link_obrok",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Obrok",
+   "options": "Obrok",
+   "search_index": 1
+  },
+  {
+   "fieldname": "link_ucenec",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Ucenec",
+   "options": "Ucenci"
+  },
+  {
+   "fetch_from": "link_obrok.datum",
+   "fieldname": "datum",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "is_virtual": 1,
+   "label": "Datum"
+  },
+  {
+   "fetch_from": "link_obrok.obrok",
+   "fieldname": "read_only_eqdg",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "is_virtual": 1
+  },
+  {
+   "fetch_from": "link_obrok.opombe",
+   "fieldname": "read_only_hcuw",
+   "fieldtype": "Read Only",
+   "in_list_view": 1,
+   "is_virtual": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-12-20 12:39:37.293774",
+ "modified_by": "Administrator",
+ "module": "prehrana",
+ "name": "UcenecObrok",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

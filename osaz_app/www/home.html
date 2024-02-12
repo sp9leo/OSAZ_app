@@ -1,0 +1,190 @@
+{% extends "templates/myweb.html" %}
+
+
+{% block header_actions %}
+
+<div class="card text-light bg-danger mb-3" style="max-width: 60rem;">
+  <!-- <div class="card-header">Header</div> -->
+  <div class="card-body">
+    <h5 class="card-title text-light">Pomembno obvestilo</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+      content.</p>
+  </div>
+</div>
+
+<div class="card text-light bg-info mb-3" style="max-width: 60rem;">
+  <!-- <div class="card-header">Header</div> -->
+  <div class="card-body">
+    <h5 class="card-title text-light">manj Pomembno obvestilo</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+      content.</p>
+  </div>
+</div>
+
+{%endblock%}
+
+
+{% block page_content %}
+
+<div class="container-fluid">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div class="card border-primary mb-2" style="max-width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Aktualno</h5>
+            <p class="card-text">
+
+              {%for e in events[:3]%}
+
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action  border-info" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{e.starts_on}}</h5>
+                  <small></small>
+                </div>
+                <p class="mb-1"> {{e.subject}}.</p>
+                <small>{{e.name}}</small>
+              </a>
+
+            </div>
+
+
+
+
+
+
+
+            {%endfor%}
+
+
+
+            Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col">
+        <div class="card border-primary mb-4" style="max-width: 40rem;">
+          <!-- <div class="card-header">Header</div> -->
+          <div class="card-body">
+            <h5 class="card-title">Oglasna deska</h5>
+
+            <p class="card-text">{%for n in notes[:3]%}
+             
+
+              {%if n.public%}
+            <div class="list-group">
+              <a href="./notes/{{n.name or n.title}}" class="list-group-item list-group-item-action  border-danger"
+                aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{n.title }}</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1"> {{n.content}}.</p>
+                <small>And some small print.</small>
+              </a>
+
+            </div>
+            {%endif%}
+
+            <div class="list-group">
+              <a href="/{{n.name or n.title}}" class="list-group-item list-group-item-action " aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">{{n.title }}</h5>
+                  <small>3 days ago</small>
+                </div>
+                <p class="mb-1"> {{n.content}}.</p>
+                <small>And some small print.</small>
+              </a>
+
+            </div>
+
+
+
+            {%endfor%}
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card border-primary mb-2" style="max-width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Urnik</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="card-group">
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+      <div class="card">
+
+        <div class="card-body">
+
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {%endblock%}

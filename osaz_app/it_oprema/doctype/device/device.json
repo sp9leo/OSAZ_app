@@ -20,6 +20,18 @@
   "column_break_laww",
   "device_status",
   "device_group",
+  "section_break_ntrf",
+  "column_break_hmxm",
+  "velikost",
+  "vhodi_column",
+  "vga",
+  "hdmi",
+  "dp",
+  "usb",
+  "zvo\u010dniki",
+  "column_break_gtcb",
+  "link_yzwv",
+  "data_jgfm",
   "section_break_bvyj",
   "koda",
   "column_break_hdtj",
@@ -29,11 +41,10 @@
   "attach_qsif",
   "column_break_wuik",
   "tab_3_tab",
-  "table_uedx",
-  "column_break_kpvx",
   "tab_4_tab",
   "html_kqki",
-  "column_break_ndnx"
+  "column_break_ndnx",
+  "link_jqan"
  ],
  "fields": [
   {
@@ -66,13 +77,15 @@
   },
   {
    "fieldname": "device_group",
-   "fieldtype": "Data",
-   "label": "Skupina"
+   "fieldtype": "Link",
+   "label": "Skupina",
+   "options": "Device Group"
   },
   {
    "fieldname": "device_status",
-   "fieldtype": "Data",
-   "label": "Status"
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "IT-Status"
   },
   {
    "fieldname": "device_type",
@@ -82,6 +95,7 @@
   {
    "fieldname": "device_serial",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Serijska \u0161t."
   },
   {
@@ -164,21 +178,83 @@
    "label": "Tab 4"
   },
   {
-   "fieldname": "table_uedx",
-   "fieldtype": "Table",
-   "options": "HD Article Item"
-  },
-  {
-   "fieldname": "column_break_kpvx",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "html_kqki",
    "fieldtype": "HTML"
   },
   {
    "fieldname": "column_break_ndnx",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hmxm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "velikost",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Velikost"
+  },
+  {
+   "fieldname": "vhodi_column",
+   "fieldtype": "Column Break",
+   "label": "Vhodi"
+  },
+  {
+   "default": "0",
+   "fieldname": "vga",
+   "fieldtype": "Check",
+   "label": "VGA"
+  },
+  {
+   "default": "0",
+   "fieldname": "hdmi",
+   "fieldtype": "Check",
+   "label": "HDMI"
+  },
+  {
+   "default": "0",
+   "fieldname": "dp",
+   "fieldtype": "Check",
+   "label": "DP"
+  },
+  {
+   "default": "0",
+   "fieldname": "usb",
+   "fieldtype": "Check",
+   "label": "USB"
+  },
+  {
+   "fieldname": "column_break_gtcb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "link_yzwv",
+   "fieldtype": "Link",
+   "label": "Proizvajalec",
+   "options": "IT-Device Manufacturer"
+  },
+  {
+   "fetch_from": "link_yzwv.manufacturer_part_no",
+   "fieldname": "data_jgfm",
+   "fieldtype": "Data",
+   "label": "Model/oznaka proizvajalca",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_ntrf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "link_jqan",
+   "fieldtype": "Link",
+   "options": "Wiki Page"
+  },
+  {
+   "default": "0",
+   "fieldname": "zvo\u010dniki",
+   "fieldtype": "Check",
+   "label": "Zvo\u010dniki"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -191,9 +267,13 @@
   {
    "link_doctype": "Asset Movement",
    "link_fieldname": "asset"
+  },
+  {
+   "link_doctype": "Wiki Page",
+   "link_fieldname": "link_upew"
   }
  ],
- "modified": "2023-11-28 13:39:30.675063",
+ "modified": "2024-01-24 08:03:36.393873",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Device",
@@ -215,5 +295,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "device_inventory_code"
 }
