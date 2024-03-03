@@ -9,19 +9,23 @@
  "idx": 0,
  "is_standard": "Yes",
  "letterhead": null,
- "modified": "2024-01-22 14:55:31.738238",
+ "modified": "2024-03-01 12:22:29.374644",
  "modified_by": "Administrator",
  "module": "prehrana",
  "name": "seznam obrokov",
  "owner": "Administrator",
  "prepared_report": 0,
- "query": "SELECT ime, priimek, uid, obrok, qr_Date, qr_time FROM tabQR_django AS obroki, tabUcenci AS ucenci\r\nWHERE obroki.uid = ucenci.ucenec_id",
+ "query": "SELECT ime, priimek, oddelek, uid, obrok, qr_Date, qr_time FROM tabQR_django AS obroki, tabUcenci AS ucenci\r\nWHERE obroki.uid = ucenci.ucenec_id\r\n",
  "ref_doctype": "Ucenci",
+ "reference_report": "",
  "report_name": "seznam obrokov",
  "report_type": "Query Report",
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Kuhinja"
   }
  ]
 }

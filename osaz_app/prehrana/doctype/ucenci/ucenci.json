@@ -2,12 +2,12 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:",
  "creation": "2023-12-20 07:22:27.807804",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_jpnp",
+  "title",
   "ucenec_id",
   "ime",
   "priimek",
@@ -51,7 +51,8 @@
    "in_filter": 1,
    "in_standard_filter": 1,
    "label": "Oddelek",
-   "options": "\n1.A\n1.B\n1.OPP\n2.A\n2.B\n3.A\n3.B\n3.OPP\n4.A\n4.B\n4.OPP\n5.A\n5.B\n6.A\n6.B\n6.OPP\n7.A\n7.B\n7.OPP\n8.A\n8.B\n8.OPP\n9.A\n9.B\n9.OPP"
+   "options": "\n1A\n1B\n1OPP\n2A\n2B\n3A\n3B\n3OPP\n4A\n4B\n4OPP\n5A\n5B\n6A\n6B\n6OPP\n7A\n7B\n7OPP\n8A\n8B\n8OPP\n9A\n9B\n9OPP",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_jpnp",
@@ -71,12 +72,14 @@
    "label": "Qr_code"
   },
   {
+   "bold": 1,
    "fieldname": "ucenec_id",
    "fieldtype": "Data",
    "in_filter": 1,
    "in_standard_filter": 1,
    "label": "UID",
-   "read_only": 1
+   "read_only": 1,
+   "unique": 1
   },
   {
    "fieldname": "column_break_asqs",
@@ -144,7 +147,7 @@
    "fieldname": "qr_table",
    "fieldtype": "Table",
    "in_filter": 1,
-   "label": "qr_table",
+   "label": "Obroki",
    "options": "QR_django"
   },
   {
@@ -157,15 +160,21 @@
    "fieldtype": "Data",
    "is_virtual": 1,
    "label": "Obrok"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "options": "{priimek} {ime}"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-22 13:54:45.831526",
+ "modified": "2024-03-01 12:44:30.613860",
  "modified_by": "Administrator",
  "module": "prehrana",
  "name": "Ucenci",
- "naming_rule": "Expression",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {
@@ -179,10 +188,23 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "priimek"
+ "title_field": "title"
 }
