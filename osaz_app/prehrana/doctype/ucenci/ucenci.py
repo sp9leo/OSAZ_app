@@ -23,7 +23,8 @@ class Ucenci(Document):
 		name = n+"000"+ a + b + c + d +e
 		name = str(name)
 		qrcode = str(n+"0"+o)
-		self.ucenec_id = name
+		self.ucenec_uid = name
+		self.ucenec_id = qrcode
 		self.qr_code = get_qr_code(qrcode)
 		#self.qr_code = get_qr_code(self.ucenec_id)
 		#self.ucenec_id = get_qr_code(self.<field>)

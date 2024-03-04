@@ -8,6 +8,7 @@
  "field_order": [
   "section_break_jpnp",
   "title",
+  "ucenec_uid",
   "ucenec_id",
   "ime",
   "priimek",
@@ -68,7 +69,6 @@
   {
    "fieldname": "qr_code",
    "fieldtype": "Small Text",
-   "hidden": 1,
    "label": "Qr_code"
   },
   {
@@ -77,7 +77,7 @@
    "fieldtype": "Data",
    "in_filter": 1,
    "in_standard_filter": 1,
-   "label": "UID",
+   "label": "ID u\u010denca",
    "read_only": 1,
    "unique": 1
   },
@@ -166,11 +166,20 @@
    "fieldtype": "Data",
    "hidden": 1,
    "options": "{priimek} {ime}"
+  },
+  {
+   "fieldname": "ucenec_uid",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_standard_filter": 1,
+   "label": "UID",
+   "read_only": 1,
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-01 12:44:30.613860",
+ "modified": "2024-03-04 09:54:52.009424",
  "modified_by": "Administrator",
  "module": "prehrana",
  "name": "Ucenci",
