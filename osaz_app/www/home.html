@@ -1,164 +1,183 @@
 {% extends "templates/myweb.html" %}
 
-
-{% block header_actions %}
-
-<div class="card text-light bg-danger mb-3" style="max-width: 60rem;">
-  <!-- <div class="card-header">Header</div> -->
-  <div class="card-body">
-    <h5 class="card-title text-light">Pomembno obvestilo</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
-  </div>
-</div>
-
-<div class="card text-light bg-info mb-3" style="max-width: 60rem;">
-  <!-- <div class="card-header">Header</div> -->
-  <div class="card-body">
-    <h5 class="card-title text-light">manj Pomembno obvestilo</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
-  </div>
-</div>
-
+{% block header %}
 {%endblock%}
 
-
+<!-- 
+ date is {{now}} -->
 {% block page_content %}
+<div class="container">
+  {%if important%}
+  <div class="row">
+    <!--Pomembna obvestila-->
+    {%for i in important[:1]%}
+    <div class="col-lg-12">
 
-<div class="container-fluid">
-  <div class="col">
-    <div class="row">
-      <div class="col">
-        <div class="card border-primary mb-2" style="max-width: 20rem;">
-          <div class="card-body">
-            <h5 class="card-title">Aktualno</h5>
-            <p class="card-text">
+      <div class="alert alert-danger mr-5 d-block" role="alert" style="width: 100%;">
+        <h5 class="alert-heading" style="margin-top: 1rem;">Obvestilo</h5>
+        <h4 class="alert-heading" style="margin-top: 1rem;">{{i.title}}</h4>
+        <p class="mb-3">{{i.content}}</p>
+        <hr>
 
-              {%for e in events[:3]%}
-
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action  border-info" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{e.starts_on}}</h5>
-                  <small></small>
-                </div>
-                <p class="mb-1"> {{e.subject}}.</p>
-                <small>{{e.name}}</small>
-              </a>
-
-            </div>
-
-
-
-
-
-
-
-            {%endfor%}
-
-
-
-            Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          </div>
-        </div>
-
+        <small class="text-muted"><i class="bi bi-calendar">{{frappe.utils.formatdate(i.zacetek,
+            "dd-MM-yyyy")}}</i><br><i class="bi bi-pencil"></i>{{frappe.utils.format_time(i.modified,
+          "hh:mm")}}<br><small>{{i.name}}</small> </small>
       </div>
-      <div class="col">
-        <div class="card border-primary mb-4" style="max-width: 40rem;">
-          <!-- <div class="card-header">Header</div> -->
-          <div class="card-body">
-            <h5 class="card-title">Oglasna deska</h5>
+    </div>
+    <hr>
+    {%endfor%}
+  </div>{%endif%}
 
-            <p class="card-text">{%for n in notes[:3]%}
-             
+  <div class="row">
+    <!--Dogodki-->
+    <div class="col-lg-4 col-sm-6">
 
-              {%if n.public%}
-            <div class="list-group">
-              <a href="./notes/{{n.name or n.title}}" class="list-group-item list-group-item-action  border-danger"
-                aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{n.title }}</h5>
-                  <small>3 days ago</small>
+      <div class=" list-group">
+        <h3 class="text-muted text-center">Danes</h3>
+        <div class="card border-white">
+          <div class="card-body"> {%if events_today%}
+            {%for e in events_today %}
+            <a href="{{e.name}}" class="list-group-item list-group-item-action" aria-current="true">
+              <div class="row">
+                <div class="col-6">
+
+                  <h5>{{e.subject}}</h5>
                 </div>
-                <p class="mb-1"> {{n.content}}.</p>
-                <small>And some small print.</small>
-              </a>
+                <div class="col-sm-6 ">
 
-            </div>
+                  <small>
+                    <div class="grid gap-0 row-gap-1">
+                      <div class="p-0 g-col-6"><i class="bi bi-clock"></i>
+                        {%if e.all_day%}
+                        cel dan
+                        {%else%}
+                        {{frappe.utils.format_time(e.starts_on,"HH:mm")}}-{{frappe.utils.format_time(e.ends_on,"HH:mm")}}
+                      {%endif%}</div>
+                      {%if e.location%}
+                      <div class="p-0 g-col-6"><i class="bi bi-building-fill"></i> {{e.location}}</div>
+                      {%else%}
+                      <div class="p-0 g-col-6"><i class="bi bi-home"></i> Na šoli</div>
+                      {%endif%}
+                      <div class="p-0 g-col-6"><i class="bi bi-circle-fill" style="color: {{e.color}};"></i>
+                        {{e.event_category}}</div>
+
+
+                    </div>
+                  </small>
+
+                </div>
+              </div>
+            </a>{%endfor%}
+            {%else%}
+            <small class="text-muted">Ni dogodkov</small>
             {%endif%}
+          </div>
+        </div>
+      </div>
 
-            <div class="list-group">
-              <a href="/{{n.name or n.title}}" class="list-group-item list-group-item-action " aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{n.title }}</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1"> {{n.content}}.</p>
-                <small>And some small print.</small>
-              </a>
 
-            </div>
+    </div>
 
 
 
+
+    <!--future events-->
+    <!-- <div class="col-lg-4 col-sm-6">
+
+      <div class="card">
+        <h3 class="text-muted text-center">Jutri</h3>
+        <div class="card-body">
+
+          {%if future_events%}
+          <div class="list-group">
+            {%for e in future_events %}
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+              <h6>{{e.name}}</h6>
+              <span class="badge badge-light badge-pill float-right ">
+                <i class="bi bi-calendar" style="margin-bottom:5px;"></i> {{e.starts_on.strftime('%d-%m' )}}<br>
+              </span>
+            </a>
             {%endfor%}
-
           </div>
+          {%else%}
+          <small class="text-muted">Ni dogodkov</small>
+          {%endif%}
         </div>
       </div>
-      <div class="col">
-        <div class="card border-primary mb-2" style="max-width: 20rem;">
-          <div class="card-body">
-            <h5 class="card-title">Urnik</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-        </div>
+    </div> -->
+    <!--koledar-->
+    <div class="col-lg-8 col-sm-6">
+      <!-- {% include "templates/koledar.html" %} -->
+      <!--Navadna obvestila-->
 
+
+      <h3 class="text-muted text-center">Obvestila</h3>
+      <div class="card border-white">
+        <div class="card-body">
+          {%if obvestila%}
+          {%for i in obvestila%}
+          <div class="alert alert-info alert-dismissible fade show ml-5 d-block" role="alert" style="width: 100%;">
+
+            <h4 class="alert-heading" style="margin-top: 1rem;">{{i.title}}</h4>
+            <p class="mb-2">{{i.content}}</p>
+            <hr>
+
+            <small class="text-muted " style="font-size:10px;"> <i
+                class="bi-calendar">{{frappe.utils.formatdate(i.modified, "dd-MM-yyyy")}}<br>{{i.name}}</i> </small>
+            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"> -->
+              <!-- <span aria-hidden="true">&times;</span> -->
+            </button>
+          </div>{%endfor%}
+          {%else%}
+          <div class="col-md-auto">
+            <small>Ni obvestil</small>
+          </div>
+
+          {% endif %}
+
+        </div>
       </div>
 
 
+
+
+      <hr>
     </div>
 
 
-    <div class="card-group">
-      <div class="card">
+  </div>
+</div>
 
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card">
+<!-- Navadna obvestila
+  <h5 class="alert-heading" style="margin-top: 1rem;">Obvestila</h5>
+  <div class="row align-items-start">
 
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card">
+    {%if obvestila%}
+    {%for i in obvestila%}
+    <div class="col-md-auto">
+      <div class="alert alert-info alert-dismissible fade show ml-5 d-block" role="alert" style="width: 100%;">
+       
+        <h4 class="alert-heading" style="margin-top: 1rem;">{{i.title}}</h4>
+        <p class="mb-2">{{i.content}}</p>
+        <hr>
 
-        <div class="card-body">
-
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
+        <small class="text-muted " style="font-size:10px;"> <i class="bi-calendar">{{frappe.utils.formatdate(i.modified, "dd-MM-yyyy")}}<br>{{i.name}}</i> </small>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     </div>
-    <!------------------------------------------------------->
+    {%endfor%}
+    {%else%}
+    <div class="col-md-auto">
+      <small>Ni obvestil</small>
+    </div>
+    
+    {% endif %}
+    
+  </div>
+<hr>
+</div> -->
 
 
 
@@ -168,6 +187,36 @@
 
 
 
+<!-- povezave -->
+
+<!-- <div class="row">
+
+    <div class="col-lg-4 col-sm-6 ">
+
+      <a href="https://www.easistent.com/prijava_v_javnosti" class="list-group-item list-group-item-action bg-light"
+        aria-current="true">
+        <h6><i class="bi bi-link" style="margin-bottom:5px;"></i> Easistent </h6>
+
+      </a>
+
+    </div>
+    <div class="col-lg-4 col-sm-6">
+
+      <a href="https://www.o-azilb.si" class="list-group-item list-group-item-action bg-light" aria-current="true">
+        <h6><i class="bi bi-link" style="margin-bottom:5px;"></i> Spletna stran šole </h6>
+
+      </a>
+
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+      <a href="http://937.ablak.arnes.si:88/Web/?" class="list-group-item list-group-item-action bg-light"
+        aria-current="true">
+        <h6><i class="bi bi-link" style="margin-bottom:5px;"></i> Rezervacija učilnice </h6>
+
+      </a>
+    </div>
+  </div> -->
 
 
 
@@ -175,16 +224,13 @@
 
 
 
+<!-- <div class="col-lg-6">
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.easistent.com/urniki/c4d3c4f6da3d2fe19677ff3c4fec059258360d4a" allowfullscreen></iframe>
+</div>
+</div> -->
 
 
 
 
-
-
-
-
-
-
-
-
-    {%endblock%}
+{%endblock%}

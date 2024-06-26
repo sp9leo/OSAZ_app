@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:zivilo",
  "creation": "2023-07-29 09:27:38.765248",
@@ -36,10 +37,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-07-29 10:16:54.605428",
+ "modified": "2024-04-22 09:38:16.699906",
  "modified_by": "Administrator",
  "module": "Jedilnik",
  "name": "Zivila",
+ "naming_rule": "By fieldname",
  "nsm_parent_field": "parent_zivila",
  "owner": "Administrator",
  "permissions": [
@@ -58,5 +60,6 @@
  ],
  "quick_entry": 1,
  "sort_field": "modified",
- "sort_order": "DESC"
+ "sort_order": "DESC",
+ "states": []
 }

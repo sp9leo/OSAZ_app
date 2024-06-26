@@ -1,0 +1,13 @@
+{
+	"css/erpnext.css": [
+		"public/boostrap/css/bootstrap.css",
+        "public/boostrap/css/bootstrap.min.css",
+        "public/boostrap/css/bootstrap-utilites.css",
+        "public/boostrap/css/bootstrap-grid.css",
+        "public//css/bootstrap-icons.min.css"
+		
+	],
+	"js/erpnext-web.min.js": [
+		"public/js/bootstrap.bundle.js"
+	]
+}

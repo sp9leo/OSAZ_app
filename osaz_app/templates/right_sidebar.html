@@ -1,20 +1,79 @@
-{% block sidebar %}
-    
+
+<div class="alert-primary">
+  {{frappe.utils.formatdate(frappe.utils.today(), "dd-MM-yyyy")}}, 
+  {{frappe.utils.format_time(frappe.utils.now(), "HH:mm")}}
+</div>
+
 <div class="card border-primary mb-3" style="max-width: 20rem;">
   <!-- <div class="card-header">Header</div> -->
+ 
   <div class="card-body">
     <h5 class="card-title">Obvestila</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+   
+    <div class="list-group">
+      {%if obvestila%}
+      {%for o in obvestila%}
+
+      {%if o.public==1 and o.important==0 %}
+      <a href="#" class="list-group-item list-group-item-action border-info  " aria-current="true">
+        <h6 class="mb-1" >{{o.title}}</h6>
+        <small class="text-muted" style="font-size:10px;"> <i class="bi-calendar">{{o.zacetek.strftime('%a, %d/%m')}}</i></small>
+      </a>
+      
+      {%endif%}
+      {%endfor%}
+      {%endif%}
+    </div>
   </div>
 </div>
-<div class="card border-primary mb-3" style="max-width: 20rem;">
+
+<div class="card border-primary mb-4" style="max-width: 40rem;">
   <!-- <div class="card-header">Header</div> -->
   <div class="card-body">
-    <h5 class="card-title">Koledar</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+
+    <h5 class="card-title">Oglasna deska</h5>
+    {%if obvestila%}
+    <p class="card-text">{%for o in obvestila[:3]%}
+
+
+      {%if o.public==1 and o.important==1 %}
+    <div class="list-group">
+      <a href="./notes/{{o.name or o.title}}" class="list-group-item list-group-item-action  border-danger"
+        aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{o.title }}</h5>
+
+
+
+        </div>
+        <p class="mb-1"> {{o.content}}.</p>
+        <small>{{ o.creation.strftime('%d-%m,%H:%M') }}</small>
+
+      </a>
+
+    </div>
+   
+    {%endif%}
+    {%if o.public==1 and o.important==0 %}
+    <div class="list-group">
+      <a href="/{{o.name or o.title}}" class="list-group-item list-group-item-action " aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{o.title }}</h5>
+
+        </div>
+        <p class="mb-1"> {{o.content}}.</p>
+        <hr>
+        <small>{{ o.creation.strftime('%d-%m,%H:%M') }}</small>
+
+      </a>
+
+    </div>
+    {%endif%}
+
+
+    {%endfor%}
+    {%endif%}
+
   </div>
+
 </div>
-    
-{% endblock %}

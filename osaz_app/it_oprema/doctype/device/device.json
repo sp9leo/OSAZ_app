@@ -8,17 +8,21 @@
  "engine": "InnoDB",
  "field_order": [
   "device_inventory_code",
+  "is_computer",
   "column_break_ibxw",
   "device_id",
   "column_break_ypaf",
+  "status",
   "device_location",
+  "company",
   "section_break_mord",
   "device_name",
+  "link_yzwv",
+  "data_jgfm",
   "column_break_enpj",
   "device_type",
   "device_serial",
   "column_break_laww",
-  "device_status",
   "device_group",
   "section_break_ntrf",
   "column_break_hmxm",
@@ -29,9 +33,8 @@
   "dp",
   "usb",
   "zvo\u010dniki",
-  "column_break_gtcb",
-  "link_yzwv",
-  "data_jgfm",
+  "column_break_mywh",
+  "opombe",
   "section_break_bvyj",
   "koda",
   "column_break_hdtj",
@@ -41,16 +44,15 @@
   "attach_qsif",
   "column_break_wuik",
   "tab_3_tab",
+  "html_bzhf",
   "tab_4_tab",
-  "html_kqki",
-  "column_break_ndnx",
-  "link_jqan"
+  "computer_link",
+  "detach"
  ],
  "fields": [
   {
    "fieldname": "device_name",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Ime"
   },
   {
@@ -82,14 +84,8 @@
    "options": "Device Group"
   },
   {
-   "fieldname": "device_status",
-   "fieldtype": "Link",
-   "label": "Status",
-   "options": "IT-Status"
-  },
-  {
    "fieldname": "device_type",
-   "fieldtype": "Data",
+   "fieldtype": "Select",
    "label": "Tip"
   },
   {
@@ -178,14 +174,6 @@
    "label": "Tab 4"
   },
   {
-   "fieldname": "html_kqki",
-   "fieldtype": "HTML"
-  },
-  {
-   "fieldname": "column_break_ndnx",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_hmxm",
    "fieldtype": "Column Break"
   },
@@ -225,10 +213,6 @@
    "label": "USB"
   },
   {
-   "fieldname": "column_break_gtcb",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "link_yzwv",
    "fieldtype": "Link",
    "label": "Proizvajalec",
@@ -242,38 +226,80 @@
    "read_only": 1
   },
   {
+   "collapsible": 1,
+   "collapsible_depends_on": "eval: doc.device_group == \"Monitor\"",
    "fieldname": "section_break_ntrf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "link_jqan",
-   "fieldtype": "Link",
-   "options": "Wiki Page"
+   "fieldtype": "Section Break",
+   "label": "Podatki o napravi"
   },
   {
    "default": "0",
    "fieldname": "zvo\u010dniki",
    "fieldtype": "Check",
    "label": "Zvo\u010dniki"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Link",
+   "label": "Status",
+   "options": "IT-Status"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Organizacija",
+   "options": "Enota"
+  },
+  {
+   "fieldname": "computer_link",
+   "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Attached to Computer",
+   "options": "Computer",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "detach",
+   "fieldtype": "Button",
+   "label": "Detach"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_computer",
+   "fieldtype": "Check",
+   "label": "Ra\u010dunalnik"
+  },
+  {
+   "fieldname": "column_break_mywh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "opombe",
+   "fieldtype": "Small Text",
+   "label": "Opombe"
+  },
+  {
+   "fieldname": "html_bzhf",
+   "fieldtype": "HTML",
+   "options": "<figure class=\"figure\"><img src=\"{{doc.qr_code}}\" alt=\"\" class=\"img-fluid\"> <figcaption class=\"figure-caption text-center\">{{doc.device_id}}</figcaption></figure>"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [
   {
-   "group": "Povezave",
-   "link_doctype": "Pc_Konfiguracija",
-   "link_fieldname": "config_device"
-  },
-  {
-   "link_doctype": "Asset Movement",
+   "link_doctype": "Premik sredstev",
    "link_fieldname": "asset"
   },
   {
-   "link_doctype": "Wiki Page",
-   "link_fieldname": "link_upew"
+   "link_doctype": "Computer",
+   "link_fieldname": "device",
+   "table_fieldname": "devices"
   }
  ],
- "modified": "2024-01-24 08:03:36.393873",
+ "modified": "2024-05-30 14:43:38.601121",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Device",
@@ -293,8 +319,15 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": [],
- "title_field": "device_inventory_code"
+ "states": [
+  {
+   "color": "Green",
+   "title": "Aktiven"
+  }
+ ],
+ "title_field": "device_inventory_code",
+ "track_changes": 1
 }

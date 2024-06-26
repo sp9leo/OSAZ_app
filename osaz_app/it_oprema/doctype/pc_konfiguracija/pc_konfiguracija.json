@@ -22,7 +22,7 @@
    "fieldname": "pckonfig_devices",
    "fieldtype": "Table",
    "label": "Devices",
-   "options": "Konfiguracija child"
+   "options": "Computer device item"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -32,7 +32,7 @@
    "link_fieldname": "link_gcpt"
   }
  ],
- "modified": "2023-12-06 09:51:49.553400",
+ "modified": "2024-05-22 08:07:33.936968",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Pc_Konfiguracija",

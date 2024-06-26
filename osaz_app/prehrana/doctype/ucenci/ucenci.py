@@ -26,8 +26,10 @@ class Ucenci(Document):
 		self.ucenec_uid = name
 		self.ucenec_id = qrcode
 		self.qr_code = get_qr_code(qrcode)
+		
 		#self.qr_code = get_qr_code(self.ucenec_id)
 		#self.ucenec_id = get_qr_code(self.<field>)
+  
 
 		
 

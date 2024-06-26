@@ -7,7 +7,7 @@ from frappe import _
 from frappe.model.document import Document
 
 
-class AssetMovement(Document):
+class Premiksredstev(Document):
 	def validate(self):
 		self.validate_asset()
 		self.validate_location()
@@ -15,12 +15,13 @@ class AssetMovement(Document):
 
 	def validate_asset(self):
 		for d in self.assets:
-			status, company = frappe.db.get_value("Asset", d.asset, ["status", "company"])
+			status, company = frappe.db.get_value("Device", d.asset, ["status", "company"])
 			if self.purpose == "Transfer" and status in ("Draft", "Scrapped", "Sold"):
 				frappe.throw(_("{0} asset cannot be transferred").format(status))
+				print("company nameis "+company)
 
-			if company != self.company:
-				frappe.throw(_("Asset {0} does not belong to company {1}").format(d.asset, self.company))
+			# if company != self.company:
+			# 	frappe.throw(_("Asset {0} does not belong to company {1}").format(d.device_id, self.company))
 
 			if not (d.source_location or d.target_location or d.from_employee or d.to_employee):
 				frappe.throw(_("Either location or employee must be required"))
@@ -28,7 +29,7 @@ class AssetMovement(Document):
 	def validate_location(self):
 		for d in self.assets:
 			if self.purpose in ["Transfer", "Issue"]:
-				current_location = frappe.db.get_value("Asset", d.asset, "location")
+				current_location = frappe.db.get_value("Device", d.asset, "device_location")
 				if d.source_location:
 					if current_location != d.source_location:
 						frappe.throw(
@@ -91,14 +92,14 @@ class AssetMovement(Document):
 	def validate_employee(self):
 		for d in self.assets:
 			if d.from_employee:
-				current_custodian = frappe.db.get_value("Asset", d.asset, "custodian")
+				current_custodian = frappe.db.get_value("Device", d.asset, "device_user")
 
 				if current_custodian != d.from_employee:
 					frappe.throw(
 						_("Asset {0} does not belongs to the custodian {1}").format(d.asset, d.from_employee)
 					)
 
-			if d.to_employee and frappe.db.get_value("Employee", d.to_employee, "company") != self.company:
+			if d.to_employee and frappe.db.get_value("User", d.to_employee, "company") != self.company:
 				frappe.throw(
 					_("Employee {0} does not belongs to the company {1}").format(d.to_employee, self.company)
 				)
@@ -121,7 +122,7 @@ class AssetMovement(Document):
 			latest_movement_entry = frappe.db.sql(
 				"""
 				SELECT asm_item.target_location, asm_item.to_employee
-				FROM `tabAsset Movement Item` asm_item, `tabAsset Movement` asm
+				FROM `tabPremik sredstev Item` asm_item, `tabPremik sredstev` asm
 				WHERE
 					asm_item.parent=asm.name and
 					asm_item.asset=%(asset)s and
@@ -138,5 +139,7 @@ class AssetMovement(Document):
 				current_location = latest_movement_entry[0][0]
 				current_employee = latest_movement_entry[0][1]
 
-			frappe.db.set_value("Asset", d.asset, "location", current_location)
-			frappe.db.set_value("Asset", d.asset, "custodian", current_employee)
+			frappe.db.set_value("Device", d.asset, "device_location", current_location)
+			frappe.db.set_value("Device", d.asset, "device_user", current_employee)
+
+#TODO - ne beleži nove lokacije v tabelo Devices

@@ -11,7 +11,7 @@ from erpnext.hr.doctype.employee.test_employee import make_employee
 from erpnext.stock.doctype.purchase_receipt.test_purchase_receipt import make_purchase_receipt
 
 
-class TestAssetMovement(unittest.TestCase):
+class TestPremiksredstev(unittest.TestCase):
 	def setUp(self):
 		frappe.db.set_value(
 			"Company", "_Test Company", "capital_work_in_progress_account", "CWIP Account - _TC"
@@ -47,7 +47,7 @@ class TestAssetMovement(unittest.TestCase):
 		if not frappe.db.exists("Location", "Test Location 2"):
 			frappe.get_doc({"doctype": "Location", "location_name": "Test Location 2"}).insert()
 
-		create_asset_movement(
+		create_premik_sredstev(
 			purpose="Transfer",
 			company=asset.company,
 			assets=[
@@ -58,7 +58,7 @@ class TestAssetMovement(unittest.TestCase):
 		)
 		self.assertEqual(frappe.db.get_value("Asset", asset.name, "location"), "Test Location 2")
 
-		movement1 = create_asset_movement(
+		movement1 = create_premik_sredstev(
 			purpose="Transfer",
 			company=asset.company,
 			assets=[
@@ -73,7 +73,7 @@ class TestAssetMovement(unittest.TestCase):
 		self.assertEqual(frappe.db.get_value("Asset", asset.name, "location"), "Test Location 2")
 
 		employee = make_employee("testassetmovemp@example.com", company="_Test Company")
-		create_asset_movement(
+		create_premik_sredstev(
 			purpose="Issue",
 			company=asset.company,
 			assets=[{"asset": asset.name, "source_location": "Test Location 2", "to_employee": employee}],
@@ -85,7 +85,7 @@ class TestAssetMovement(unittest.TestCase):
 		self.assertEqual(frappe.db.get_value("Asset", asset.name, "location"), None)
 		self.assertEqual(frappe.db.get_value("Asset", asset.name, "custodian"), employee)
 
-		create_asset_movement(
+		create_premik_sredstev(
 			purpose="Receipt",
 			company=asset.company,
 			assets=[{"asset": asset.name, "from_employee": employee, "target_location": "Test Location"}],
@@ -125,7 +125,7 @@ class TestAssetMovement(unittest.TestCase):
 		movement = frappe.get_doc({"doctype": "Asset Movement", "reference_name": pr.name})
 		self.assertRaises(frappe.ValidationError, movement.cancel)
 
-		movement1 = create_asset_movement(
+		movement1 = create_premik_sredstev(
 			purpose="Transfer",
 			company=asset.company,
 			assets=[
@@ -140,7 +140,7 @@ class TestAssetMovement(unittest.TestCase):
 		self.assertEqual(frappe.db.get_value("Asset", asset.name, "location"), "Test Location")
 
 
-def create_asset_movement(**args):
+def create_premik_sredstev(**args):
 	args = frappe._dict(args)
 
 	if not args.transaction_date:

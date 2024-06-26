@@ -19,6 +19,14 @@ app_license = "MIT"
 # include js, css files in header of web template
 # web_include_css = "/assets/osaz_app/css/osaz_app.css"
 # web_include_js = "/assets/osaz_app/js/osaz_app.js"
+#web_include_css = "/assets/osaz_app/css/bootstrap.min.css"
+#web_include_css = "/assets/osaz_app/css/style.css"
+#web_include_css = "/assets/osaz_app/css/style.css"
+#web_include_css = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+#web_include_js = "https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/sl.global.js"
+
+
+
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "osaz_app/public/scss/website"
@@ -61,6 +69,8 @@ jinja = {
 # automatically create page for each record of this doctype
 # website_generators = ["Web Page"]
 
+
+
 # Installation
 # ------------
 
@@ -98,6 +108,9 @@ jinja = {
 # override_doctype_class = {
 #	"ToDo": "custom_app.overrides.CustomToDo"
 # }
+# override_doctype_class = {
+#     "Event": "osaz_app.intranet.dogodek.event.Myevent",
+#   }
 
 # Document Events
 # ---------------

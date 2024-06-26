@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:title",
+ "autoname": "format:{title}",
  "creation": "2023-11-28 14:59:32.038572",
  "default_view": "List",
  "doctype": "DocType",
@@ -69,11 +69,11 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-11-28 15:05:31.926269",
+ "modified": "2024-05-30 14:51:17.676400",
  "modified_by": "Administrator",
  "module": "IT_Oprema",
  "name": "Device Group",
- "naming_rule": "Expression (old style)",
+ "naming_rule": "Expression",
  "nsm_parent_field": "parent_device_group",
  "owner": "Administrator",
  "permissions": [
@@ -92,5 +92,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "parent_device_group"
 }

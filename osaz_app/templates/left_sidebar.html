@@ -1,13 +1,77 @@
-{% block sidebar %}
-    
-      <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
-          The current button
-        </button>
-        <button type="button" class="list-group-item list-group-item-action">A second item</button>
-        <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-        <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-        <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+{% block left_sidebar %}
+<div class="d-grid gap-2"><div class="btn-group-vertical">
+  <a href="https://www.easistent.com/prijava_v_javnosti" class="btn btn-light btn-lg" ><i class="bi bi-link-45deg"></i>eAsistent</a>
+  <a href="#" class="btn btn-light btn-lg " ><i class="bi bi-link-45deg" ></i>Spletna stran šole</a>
+  <a href="#" class="btn btn-light btn-lg " ><i class="bi bi-link-45deg"></i>Rezervacija učilnice</a>
+</div></div>
+
+
+
+
+<div class="list-group">
+  <h3 class="text-muted text-center">Danes</h3>
+  <div class="card-body"> {%if events_today%}
+    {%for e in events_today %}
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="row"">
+        <div class="col-6">
+          
+          <h7>{{e.subject}}</h7>
+        </div>
+        <div class="col-sm-6"  > 
+            
+          <small><small><div class="grid gap-0 row-gap-1">
+              <div class="p-0 g-col-6"><i class="bi bi-calendar"></i> {{frappe.utils.formatdate(e.starts_on,"dd-MM")}}</div>
+              {%if e.location%}
+                      <div class="p-0 g-col-6"><i class="bi bi-building-fill"></i> {{e.location}}</div>
+                      {%else%}
+                      <div class="p-0 g-col-6"><i class="bi bi-house-heart"></i> Na šoli</div>
+                      {%endif%}
+              <div class="p-0 g-col-6"><i class="bi bi-card-text" style="color: {{e.color}};"></i> {{e.event_category}}</div>
+              
+            </div></small> </small> 
+         
+        </div>
       </div>
-    
+    </a>{%endfor%}
+    {%else%}
+    <small class="text-muted">Ni dogodkov</small>
+    {%endif%}
+  </div>
+</div>
+
+
+<div class="list-group">
+  <h3 class="text-muted text-center">Jutri</h3>
+  <div class="card-body"> {%if future_events%}
+    {%for e in future_events %}
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="row">
+        <div class="col-6">
+          
+          <h7>{{e.subject}}</h7>
+        </div>
+        <div class="col-sm-6 "> 
+            
+          <small><small><div class="grid gap-0 row-gap-1">
+              <div class="p-0 g-col-6"><i class="bi bi-calendar"></i> {{frappe.utils.formatdate(e.starts_on,"dd-MM")}}</div>
+              {%if e.location%}
+                      <div class="p-0 g-col-6"><i class="bi bi-building-fill"></i> {{e.location}}</div>
+                      {%else%}
+                      <div class="p-0 g-col-6"><i class="bi bi-house-heart"></i> Na šoli</div>
+                      {%endif%}
+              <div class="p-0 g-col-6"><i class="bi bi-card-text" style="color: {{e.color}};"></i> {{e.event_category}}</div>
+              
+            </div></small> </small> 
+         
+        </div>
+      </div>
+    </a>{%endfor%}
+    {%else%}
+    <small class="text-muted">Ni dogodkov</small>
+    {%endif%}
+  </div>
+</div>
+
+
 {% endblock %}
